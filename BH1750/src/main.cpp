@@ -1,28 +1,16 @@
 #include <Wire.h>
 #include <BH1750.h>
 
-BH1750 lightMeter;
+BH1750 bh;
 
 void setup() {
   Serial.begin(115200);
-
-  // Khởi tạo I2C (SDA, SCL)
-  Wire.begin(21, 22);
-
-  // Khởi động cảm biến
-  if (lightMeter.begin()) {
-    Serial.println("BH1750 started");
-  } else {
-    Serial.println("Error initializing BH1750");
-  }
+  Wire.begin(21, 22);   
+  bh.begin();
 }
 
 void loop() {
-  float lux = lightMeter.readLightLevel();
-
-  Serial.print("Light: ");
-  Serial.print(lux);
-  Serial.println(" lx");
-
+  Serial.print("Lux: ");
+  Serial.println(bh.readLightLevel());
   delay(1000);
 }
