@@ -9,7 +9,6 @@ DHT dht(DHTPIN, DHTTYPE);
 void setup() {
   Serial.begin(115200);
   dht.begin();
-  Serial.println("Khoi dong DHT11");
 }
 
 void loop() {
@@ -28,4 +27,5 @@ void loop() {
   Serial.println(" %");
 
   delay(2000);  
+
 }
