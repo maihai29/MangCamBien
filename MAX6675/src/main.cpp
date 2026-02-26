@@ -1,20 +1,19 @@
 #include <Arduino.h>
 #include <max6675.h>
 
-int thermoSO = 19;
-int thermoCS = 5;
-int thermoSCK = 18;
+int pinSO = 19;
+int pinCS = 5;
+int pinSCK = 18;
 
-MAX6675 thermocouple(thermoSCK, thermoCS, thermoSO);
+MAX6675 cambien(pinSCK, pinCS, pinSO);
 
 void setup() {
   Serial.begin(115200);
   delay(500);
-  Serial.println("MAX6675 test");
 }
 
 void loop() {
-  float temperature = thermocouple.readCelsius();
+  float temperature = cambien.readCelsius();
 
   Serial.print("Temperature: ");
   Serial.print(temperature);
